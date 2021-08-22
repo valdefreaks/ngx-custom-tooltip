@@ -21,9 +21,7 @@ npm install ngx-custom-tooltip
 ```ts
 ....
 import { NgxCustomTooltipModule } from 'ngx-custom-tooltip';
-
 ....
-
 @NgModule({
     ...
     imports: [
@@ -35,13 +33,14 @@ import { NgxCustomTooltipModule } from 'ngx-custom-tooltip';
 export class AppModule { }
 ```
 
-**Step 3:** Wrap _ngx-custom-tooltip_ tag around your elements in the **_app.component.html_** file
+**Step 3:** Wrap _ngx-custom-tooltip_ tag around your elements in the **_app.component.html_**  file
 
 ```html
+<button #target>Open</button>
 <ngx-custom-tooltip [target]="target" 
                     (closeEmitter)="handleClose($event)">
     <p>This is a tooltip message!</p>
-</div>
+</ngx-custom-tooltip>
 ```
 
 ## Options
