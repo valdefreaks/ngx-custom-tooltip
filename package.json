@@ -1,6 +1,6 @@
 {
   "name": "ngx-custom-tooltip",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Customizable tooltip for Angular projects",
   "repository": {
     "type": "git",
