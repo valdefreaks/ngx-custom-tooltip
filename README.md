@@ -8,6 +8,9 @@
 It can be used as a tooltip (it closes when you click outside of it), or as a pop-up with a close button.  
 It has a `ng-content` tag, so you can place all kinds of html elements inside them.
 
+## Compatibility
+
+Node v16.20.2
 ## Get Started
 
 **Step 1:** Install ngx-virtual-scroller

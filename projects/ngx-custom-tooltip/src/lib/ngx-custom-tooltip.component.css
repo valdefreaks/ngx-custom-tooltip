@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+}
+:host {
+    background-color: transparent;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+:host > .ngxct-component {
+    position: fixed;
+    transition: all 0.3s ease-in-out;
+}
+:host > .ngxct-component > .ngxct-fixed {
+    background-color: transparent;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+}
+:host > .ngxct-component > .ngxct-fixed > .ngxct-container {
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+:host
+> .ngxct-component
+> .ngxct-fixed
+> .ngxct-container
+> .ngxct-close-button {
+    cursor: pointer;
+    position: absolute;
+}
+:host
+> .ngxct-component
+> .ngxct-fixed
+> .ngxct-container
+> .ngxct-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+}
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    height: 14px;
+    position: absolute;
+    width: 14px;
+    z-index: 3;
+}
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.topCenter,
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.topStart,
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.topEnd {
+    transform: rotate(45deg);
+}
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.bottomCenter,
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.bottomStart,
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.bottomEnd {
+    transform: rotate(225deg);
+}
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.rightCenter,
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.rightStart,
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.rightEnd {
+    transform: rotate(135deg);
+}
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.leftCenter,
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.leftStart,
+:host > .ngxct-component > .ngxct-fixed > .ngxct-triangle.leftEnd {
+    transform: rotate(315deg);
+}
