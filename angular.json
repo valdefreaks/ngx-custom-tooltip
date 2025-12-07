@@ -28,18 +28,6 @@
             "tsConfig": "projects/ngx-custom-tooltip/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-custom-tooltip/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-custom-tooltip/tsconfig.lib.json",
-              "projects/ngx-custom-tooltip/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -63,9 +51,7 @@
               "projects/demo-app/src/favicon.ico",
               "projects/demo-app/src/assets"
             ],
-            "styles": [
-              "projects/demo-app/src/styles.css"
-            ],
+            "styles": ["projects/demo-app/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -127,23 +113,8 @@
               "projects/demo-app/src/favicon.ico",
               "projects/demo-app/src/assets"
             ],
-            "styles": [
-              "projects/demo-app/src/styles.css"
-            ],
+            "styles": ["projects/demo-app/src/styles.css"],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/demo-app/tsconfig.app.json",
-              "projects/demo-app/tsconfig.spec.json",
-              "projects/demo-app/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
@@ -159,6 +130,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ngx-custom-tooltip"
 }

@@ -11,14 +11,9 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "ngx-custom-tooltip": [
-        "projects/ngx-custom-tooltip/src/public-api.ts"
-      ]
+      "ngx-custom-tooltip": ["projects/ngx-custom-tooltip/src/public-api.ts"]
     }
   }
 }

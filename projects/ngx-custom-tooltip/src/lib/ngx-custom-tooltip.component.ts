@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  DoCheck,
   ElementRef,
   EventEmitter,
   HostListener,
@@ -12,7 +11,7 @@ import {
   Output,
   Renderer2,
   ViewChild,
-} from "@angular/core";
+} from '@angular/core';
 
 interface SimpleRect {
   top: number;
@@ -25,59 +24,71 @@ interface SimpleRect {
   y: number;
 }
 
-type PopUpPositionKey =
-    | 'topStart'
-    | 'topCenter'
-    | 'topEnd'
-    | 'rightStart'
-    | 'rightCenter'
-    | 'rightEnd'
-    | 'bottomStart'
-    | 'bottomCenter'
-    | 'bottomEnd'
-    | 'leftStart'
-    | 'leftCenter'
-    | 'leftEnd';
+export type PopUpPositionKey =
+  | 'topStart'
+  | 'topCenter'
+  | 'topEnd'
+  | 'rightStart'
+  | 'rightCenter'
+  | 'rightEnd'
+  | 'bottomStart'
+  | 'bottomCenter'
+  | 'bottomEnd'
+  | 'leftStart'
+  | 'leftCenter'
+  | 'leftEnd';
+
+type PopUpPositionKebabCaseKey =
+  | 'top-start'
+  | 'top-center'
+  | 'top-end'
+  | 'right-start'
+  | 'right-center'
+  | 'right-end'
+  | 'bottom-start'
+  | 'bottom-center'
+  | 'bottom-end'
+  | 'left-start'
+  | 'left-center'
+  | 'left-end';
 
 function isEqualRect(a: SimpleRect, b: SimpleRect): boolean {
   return (
-      a.top === b.top &&
-      a.right === b.right &&
-      a.bottom === b.bottom &&
-      a.left === b.left &&
-      a.width === b.width &&
-      a.height === b.height &&
-      a.x === b.x &&
-      a.y === b.y
+    a.top === b.top &&
+    a.right === b.right &&
+    a.bottom === b.bottom &&
+    a.left === b.left &&
+    a.width === b.width &&
+    a.height === b.height &&
+    a.x === b.x &&
+    a.y === b.y
   );
 }
 
 @Component({
-  selector: "ngx-custom-tooltip",
+  selector: 'ngx-custom-tooltip',
   templateUrl: './ngx-custom-tooltip.component.html',
   styleUrls: ['./ngx-custom-tooltip.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NgxCustomTooltipComponent
-  implements DoCheck, OnChanges, AfterViewInit
-{
+export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   /**
    * Color de fondo del tooltip (`background-color`).
    * @default "#ffffff"
    */
-  @Input() bgColor: string = "#ffffff";
+  @Input() bgColor = '#ffffff';
 
   /**
    * Color del borde del tooltip (`border-color`).
    * @default "#d3d3d3"
    */
-  @Input() borderColor: string = "#d3d3d3";
+  @Input() borderColor = '#d3d3d3';
 
   /**
    * Radio del borde del tooltip (`border-radius`). Acepta cualquier sintaxis CSS válida.
    * @default "4px"
    */
-  @Input() borderRadius: string = "4px";
+  @Input() borderRadius = '4px';
 
   /**
    * Indica si el tooltip muestra un botón de cierre.
@@ -98,21 +109,21 @@ export class NgxCustomTooltipComponent
    * Acepta cualquier sintaxis CSS válida.
    * @default "20px"
    */
-  @Input() closeButtonMargin: string = "20px";
+  @Input() closeButtonMargin = '20px';
 
   /**
    * Tamaño del botón de cierre (`height` y `width`).
    * Acepta cualquier sintaxis CSS válida.
    * @default "20px"
    */
-  @Input() closeButtonSize: string = "20px";
+  @Input() closeButtonSize = '20px';
 
   /**
    * Desplazamiento adicional del tooltip respecto a su target.
    * No se aplica para posiciones de tipo `*Center` (por ejemplo `topCenter`).
    * @default 0
    */
-  @Input() displacement: number = 0;
+  @Input() displacement = 0;
 
   /**
    * Distancia mínima entre el tooltip y su elemento objetivo.
@@ -126,35 +137,35 @@ export class NgxCustomTooltipComponent
    * Acepta cualquier sintaxis CSS válida.
    * @default "max-content"
    */
-  @Input() maxHeight: string = "max-content";
+  @Input() maxHeight = 'max-content';
 
   /**
    * Anchura máxima del tooltip. Al superarla, aparece un scroll horizontal.
    * Acepta cualquier sintaxis CSS válida.
    * @default "max-content"
    */
-  @Input() maxWidth: string = "max-content";
+  @Input() maxWidth = 'max-content';
 
   /**
    * Altura mínima del tooltip.
    * Acepta cualquier sintaxis CSS válida.
    * @default "auto"
    */
-  @Input() minHeight: string = "auto";
+  @Input() minHeight = 'auto';
 
   /**
    * Anchura mínima del tooltip.
    * Acepta cualquier sintaxis CSS válida.
    * @default "auto"
    */
-  @Input() minWidth: string = "auto";
+  @Input() minWidth = 'auto';
 
   /**
    * Relleno interno del contenido del tooltip (`padding`).
    * Acepta cualquier sintaxis CSS válida.
    * @default "8px"
    */
-  @Input() padding: string = "8px";
+  @Input() padding = '8px';
 
   /**
    * Posición del tooltip respecto a su elemento objetivo.
@@ -165,7 +176,7 @@ export class NgxCustomTooltipComponent
    * `rightStart`, `rightCenter`, `rightEnd`.
    * @default "topCenter"
    */
-  @Input() popUpPosition: string = "topCenter";
+  @Input() popUpPosition: PopUpPositionKey = 'topCenter';
 
   /**
    * Elemento HTML que actúa como referencia/target del tooltip.
@@ -190,7 +201,7 @@ export class NgxCustomTooltipComponent
   /**
    * ElementRef del pop-up HTML.
    */
-  @ViewChild("popUp") popUpElement?: ElementRef<HTMLElement>;
+  @ViewChild('popUp') popUpElement?: ElementRef<HTMLElement>;
 
   /**
    * Medidas y posición del pop-up
@@ -233,31 +244,20 @@ export class NgxCustomTooltipComponent
   triangleRightPosition?: string;
 
   /**
-   * Mapa de posición lógica del pop-up.
-   * Se usa como tabla de claves para calcular el valor real de `top`.
+   * Posición `right` del triángulo del pop-up en formato CSS respecto a la página.
    */
-  private readonly popUpTopKeyByPosition: Record<PopUpPositionKey, string> = {
-    topStart: 'topStart',
-    topCenter: 'topCenter',
-    topEnd: 'topEnd',
-    rightStart: 'rightStart',
-    rightCenter: 'rightCenter',
-    rightEnd: 'rightEnd',
-    bottomStart: 'bottomStart',
-    bottomCenter: 'bottomCenter',
-    bottomEnd: 'bottomEnd',
-    leftStart: 'leftStart',
-    leftCenter: 'leftCenter',
-    leftEnd: 'leftEnd',
-  };
+  mappedPopUpPosition?: PopUpPositionKebabCaseKey;
 
-  @HostListener("document:click", ["$event"])
+  /*
+   * Escucha los clicks en el documento para cerrar el pop-up si se hace click fuera.
+   */
+  @HostListener('document:click', ['$event'])
   clickOut(e: MouseEvent): void {
     if (
-        !this.closeButton &&
-        this.popUpElement &&
-        e.target !== this.popUpElement.nativeElement &&
-        e.target !== this.target
+      !this.closeButton &&
+      this.popUpElement &&
+      e.target !== this.popUpElement.nativeElement &&
+      e.target !== this.target
     ) {
       this.closePopUp();
     }
@@ -274,21 +274,18 @@ export class NgxCustomTooltipComponent
   }
 
   constructor(
-      private cdr: ChangeDetectorRef,
-      private renderer: Renderer2
+    private cdr: ChangeDetectorRef,
+    private renderer: Renderer2,
   ) {}
 
   /**
    * Revisa si han cambiado las entradas que podrían afectar a la posición del pop-up.
    */
   ngOnChanges(): void {
-    this.popUpPosition = this.popUpTopKeyByPosition[this.popUpPosition] || 'topCenter';
     this.displacement = !isNaN(+this.displacement)
-        ? Number(this.displacement)
-        : 0;
-  }
-
-  ngDoCheck(): void {
+      ? Number(this.displacement)
+      : 0;
+    this.mappedPopUpPosition = this.mappingPopUpPositionToCssClass();
     this.checkForPositionChanges();
   }
 
@@ -301,10 +298,9 @@ export class NgxCustomTooltipComponent
   }
 
   /*
-  * Revisa si ha habido cambios en la posición o tamaño del target o del pop-up.
-  */
+   * Revisa si ha habido cambios en la posición o tamaño del target o del pop-up.
+   */
   checkForPositionChanges(): void {
-    console.log("checkForPositionChanges", this.target, this.targetBounding, this.popUpElement, this.popUpBounding);
     if (!this.target) {
       console.warn('target not provided for NgxCustomTooltipComponent');
     }
@@ -312,14 +308,14 @@ export class NgxCustomTooltipComponent
       return;
     }
     /*
-    * Si no se han establecido las medidas aún, se establecen.
-    */
+     * Si no se han establecido las medidas aún, se establecen.
+     */
     if (!this.targetBounding || !this.popUpBounding) {
       this.setPositions();
     } else {
       /*
-      * Se establecen las medidas solo si han cambiado.
-      */
+       * Se establecen las medidas solo si han cambiado.
+       */
       const last = (): SimpleRect => {
         const { top, right, bottom, left, width, height, x, y } =
           this.targetBounding!;
@@ -338,11 +334,10 @@ export class NgxCustomTooltipComponent
   }
 
   setPositions(): void {
-    console.log("setPositions", this.target, this.targetBounding, this.popUpElement, this.popUpBounding);
     this.targetBounding = this.target.getBoundingClientRect();
     const popUpNative: HTMLElement = this.renderer.selectRootElement(
       this.popUpElement.nativeElement,
-      true
+      true,
     );
 
     this.popUpBounding = popUpNative.getBoundingClientRect();
@@ -369,48 +364,48 @@ export class NgxCustomTooltipComponent
   private calculatePopUpTopPosition(): string {
     const setPopUpTopPosition: Record<PopUpPositionKey, string> = {
       topStart: `${
-              this.targetBounding!.top -
-              this.popUpBounding!.height -
-              this.floatingSize
-          }px`,
+        this.targetBounding!.top -
+        this.popUpBounding!.height -
+        this.floatingSize
+      }px`,
       topCenter: `${
-              this.targetBounding!.top -
-              this.popUpBounding!.height -
-              this.floatingSize
-          }px`,
+        this.targetBounding!.top -
+        this.popUpBounding!.height -
+        this.floatingSize
+      }px`,
       topEnd: `${
-              this.targetBounding!.top -
-              this.popUpBounding!.height -
-              this.floatingSize
-          }px`,
+        this.targetBounding!.top -
+        this.popUpBounding!.height -
+        this.floatingSize
+      }px`,
       rightStart: `${this.targetBounding!.top - 11 - this.displacement}px`,
       rightCenter: `${
-              this.targetBounding!.top +
-              this.targetBounding!.height / 2 -
-              this.popUpBounding!.height / 2
-          }px`,
+        this.targetBounding!.top +
+        this.targetBounding!.height / 2 -
+        this.popUpBounding!.height / 2
+      }px`,
       rightEnd: `${
-              this.targetBounding!.bottom -
-              this.popUpBounding!.height +
-              10 +
-              this.displacement
-          }px`,
+        this.targetBounding!.bottom -
+        this.popUpBounding!.height +
+        10 +
+        this.displacement
+      }px`,
       bottomStart: `${this.targetBounding!.bottom + this.floatingSize}px`,
       bottomCenter: `${this.targetBounding!.bottom + this.floatingSize}px`,
       bottomEnd: `${this.targetBounding!.bottom + this.floatingSize}px`,
       leftStart: `${this.targetBounding!.top - 11 - this.displacement}px`,
       leftCenter: `${
-              this.targetBounding!.top +
-              this.targetBounding!.height / 2 -
-              this.popUpBounding!.height / 2
-          }px`,
+        this.targetBounding!.top +
+        this.targetBounding!.height / 2 -
+        this.popUpBounding!.height / 2
+      }px`,
       leftEnd: `${
-          this.targetBounding!.bottom -
-          this.popUpBounding!.height +
-              10 +
-          this.displacement
-          }px`,
-    }
+        this.targetBounding!.bottom -
+        this.popUpBounding!.height +
+        10 +
+        this.displacement
+      }px`,
+    };
     return setPopUpTopPosition[this.popUpPosition];
   }
 
@@ -421,47 +416,47 @@ export class NgxCustomTooltipComponent
     const setPopUpLeftPosition: Record<PopUpPositionKey, string> = {
       topStart: `${this.targetBounding!.left - 10 - this.displacement}px`,
       topCenter: `${
-              this.targetBounding!.left +
-              this.targetBounding!.width / 2 -
-              this.popUpBounding!.width / 2
-          }px`,
+        this.targetBounding!.left +
+        this.targetBounding!.width / 2 -
+        this.popUpBounding!.width / 2
+      }px`,
       topEnd: `${
-              this.targetBounding!.right -
-              this.popUpBounding!.width +
-              10 +
-              this.displacement
-          }px`,
+        this.targetBounding!.right -
+        this.popUpBounding!.width +
+        10 +
+        this.displacement
+      }px`,
       rightStart: `${this.targetBounding!.right + this.floatingSize}px`,
       rightCenter: `${this.targetBounding!.right + this.floatingSize}px`,
       rightEnd: `${this.targetBounding!.right + this.floatingSize}px`,
       bottomStart: `${this.targetBounding!.left - 10 - this.displacement}px`,
       bottomCenter: `${
-              this.targetBounding!.left +
-              this.targetBounding!.width / 2 -
-              this.popUpBounding!.width / 2
-          }px`,
+        this.targetBounding!.left +
+        this.targetBounding!.width / 2 -
+        this.popUpBounding!.width / 2
+      }px`,
       bottomEnd: `${
-          this.targetBounding!.right -
-          this.popUpBounding!.width +
-              11 +
-          this.displacement
-          }px`,
+        this.targetBounding!.right -
+        this.popUpBounding!.width +
+        11 +
+        this.displacement
+      }px`,
       leftStart: `${
-              this.targetBounding!.left -
-              this.popUpBounding!.width -
-              this.floatingSize
-          }px`,
+        this.targetBounding!.left -
+        this.popUpBounding!.width -
+        this.floatingSize
+      }px`,
       leftCenter: `${
-              this.targetBounding!.left -
-              this.popUpBounding!.width -
-              this.floatingSize
-          }px`,
+        this.targetBounding!.left -
+        this.popUpBounding!.width -
+        this.floatingSize
+      }px`,
       leftEnd: `${
-              this.targetBounding!.left -
-              this.popUpBounding!.width -
-              this.floatingSize
-          }px`,
-    }
+        this.targetBounding!.left -
+        this.popUpBounding!.width -
+        this.floatingSize
+      }px`,
+    };
     return setPopUpLeftPosition[this.popUpPosition];
   }
 
@@ -470,19 +465,19 @@ export class NgxCustomTooltipComponent
    */
   private calculateTriangleTopPosition(): string {
     const position: Record<PopUpPositionKey, string> = {
-      topStart: "auto",
-      topCenter: "auto",
-      topEnd: "auto",
-      bottomStart: "3px",
-      bottomCenter: "3px",
-      bottomEnd: "3px",
+      topStart: 'auto',
+      topCenter: 'auto',
+      topEnd: 'auto',
+      bottomStart: '3px',
+      bottomCenter: '3px',
+      bottomEnd: '3px',
       leftStart: `${this.targetBounding!.height / 2 + 3 + this.displacement}px`,
       leftCenter: `${this.popUpBounding!.height / 2 - 8}px`,
-      leftEnd: "auto",
+      leftEnd: 'auto',
       rightStart: `${this.targetBounding!.height / 2 + 3 + this.displacement}px`,
       rightCenter: `${this.popUpBounding!.height / 2 - 5}px`,
-      rightEnd: "auto",
-    }
+      rightEnd: 'auto',
+    };
     return position[this.popUpPosition];
   }
 
@@ -491,19 +486,19 @@ export class NgxCustomTooltipComponent
    */
   private calculateTriangleBottomPosition(): string {
     const position: Record<PopUpPositionKey, string> = {
-      topStart: "3px",
-      topCenter: "3px",
-      topEnd: "3px",
-      bottomStart: "auto",
-      bottomCenter: "auto",
-      bottomEnd: "auto",
-      leftStart: "auto",
-      leftCenter: "auto",
+      topStart: '3px',
+      topCenter: '3px',
+      topEnd: '3px',
+      bottomStart: 'auto',
+      bottomCenter: 'auto',
+      bottomEnd: 'auto',
+      leftStart: 'auto',
+      leftCenter: 'auto',
       leftEnd: `${this.targetBounding!.height / 2 + 5 + this.displacement}px`,
-      rightStart: "auto",
-      rightCenter: "auto",
+      rightStart: 'auto',
+      rightCenter: 'auto',
       rightEnd: `${this.targetBounding!.height / 2 + 5 + this.displacement}px`,
-    }
+    };
     return position[this.popUpPosition];
   }
 
@@ -514,17 +509,17 @@ export class NgxCustomTooltipComponent
     const position: Record<PopUpPositionKey, string> = {
       topStart: `${this.targetBounding!.width / 2 + 4 + this.displacement}px`,
       topCenter: `${this.popUpBounding!.width / 2 - 7}px`,
-      topEnd: "auto",
+      topEnd: 'auto',
       bottomStart: `${this.targetBounding!.width / 2 + 4 + this.displacement}px`,
       bottomCenter: `${this.popUpBounding!.width / 2 - 6}px`,
-      bottomEnd: "auto",
-      leftStart: "auto",
-      leftCenter: "auto",
-      leftEnd: "auto",
-      rightStart: "3px",
-      rightCenter: "3px",
-      rightEnd: "3px",
-    }
+      bottomEnd: 'auto',
+      leftStart: 'auto',
+      leftCenter: 'auto',
+      leftEnd: 'auto',
+      rightStart: '3px',
+      rightCenter: '3px',
+      rightEnd: '3px',
+    };
     return position[this.popUpPosition];
   }
 
@@ -533,20 +528,38 @@ export class NgxCustomTooltipComponent
    */
   private calculateTriangleRightPosition(): string {
     const position: Record<PopUpPositionKey, string> = {
-      topStart: "auto",
-      topCenter: "auto",
+      topStart: 'auto',
+      topCenter: 'auto',
       topEnd: `${this.targetBounding!.width / 2 + 3 + this.displacement}px`,
-      bottomStart: "auto",
-      bottomCenter: "auto",
+      bottomStart: 'auto',
+      bottomCenter: 'auto',
       bottomEnd: `${this.targetBounding!.width / 2 + 3 + this.displacement}px`,
-      leftStart: "3px",
-      leftCenter: "3px",
-      leftEnd: "3px",
-      rightStart: "auto",
-      rightCenter: "auto",
-      rightEnd: "auto",
-    }
+      leftStart: '3px',
+      leftCenter: '3px',
+      leftEnd: '3px',
+      rightStart: 'auto',
+      rightCenter: 'auto',
+      rightEnd: 'auto',
+    };
     return position[this.popUpPosition];
   }
-}
 
+  private mappingPopUpPositionToCssClass(): PopUpPositionKebabCaseKey {
+    const keys: Record<PopUpPositionKey, PopUpPositionKebabCaseKey> = {
+      topStart: 'top-start',
+      topCenter: 'top-center',
+      topEnd: 'top-end',
+      rightStart: 'right-start',
+      rightCenter: 'right-center',
+      rightEnd: 'right-end',
+      bottomStart: 'bottom-start',
+      bottomCenter: 'bottom-center',
+      bottomEnd: 'bottom-end',
+      leftStart: 'left-start',
+      leftCenter: 'left-center',
+      leftEnd: 'left-end',
+    };
+
+    return keys[this.popUpPosition];
+  }
+}
