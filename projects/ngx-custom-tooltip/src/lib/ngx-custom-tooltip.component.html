@@ -1,0 +1,47 @@
+<div
+  class="ngxct-component"
+  #popUp
+  [style.top]="popUpTopProperty"
+  [style.left]="popUpLeftProperty"
+>
+  <div
+    class="ngxct-fixed"
+    [style.border-radius]="borderRadius"
+    [style.max-height]="maxHeight"
+    [style.max-width]="maxWidth"
+    [style.min-height]="minHeight"
+    [style.min-width]="minWidth"
+    (click)="handleStopEvents($event)"
+  >
+    <div
+      class="ngxct-container"
+      [style.background-color]="bgColor"
+      [style.border-color]="borderColor"
+      [style.border-radius]="borderRadius"
+      [style.padding]="padding"
+    >
+      <img
+        class="ngxct-close-button"
+        alt=""
+        *ngIf="closeButton"
+        [src]="closeButtonImage && closeButtonImage"
+        [style.height]="closeButtonSize"
+        [style.right]="closeButtonMargin"
+        [style.top]="closeButtonMargin"
+        [style.width]="closeButtonSize"
+        (click)="closePopUp()"
+      />
+      <ng-content class="ngxct-content"></ng-content>
+    </div>
+    <div
+      [class]="'ngxct-triangle ' + mappedPopUpPosition"
+      [style.background-color]="triangleBgColor ? triangleBgColor : bgColor"
+      [style.border-bottom-color]="borderColor"
+      [style.border-right-color]="borderColor"
+      [style.bottom]="triangleBottomPosition"
+      [style.left]="triangleLeftPosition"
+      [style.right]="triangleRightPosition"
+      [style.top]="triangleTopPosition"
+    ></div>
+  </div>
+</div>
