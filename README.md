@@ -16,7 +16,7 @@ It has a `ng-content` tag, so you can place all kinds of html elements inside th
 
 ## Get Started
 
-**Step 1:** Install ngx-virtual-scroller
+**Step 1:** Install ngx-custom-tooltip
 
 ```sh
 npm install ngx-custom-tooltip

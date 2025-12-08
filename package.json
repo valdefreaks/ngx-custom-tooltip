@@ -2,7 +2,7 @@
   "name": "ngx-custom-tooltip-workspace",
   "scripts": {
     "build": "ng build ngx-custom-tooltip",
-    "build:lib": "ng build ngx-custom-tooltip",
+    "build:lib": "ng build ngx-custom-tooltip --prod",
     "pack:lib": "cd dist/ngx-custom-tooltip && npm pack",
     "test": "ng test ngx-custom-tooltip",
     "start": "ng serve demo-app",
