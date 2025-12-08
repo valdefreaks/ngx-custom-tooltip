@@ -3,25 +3,28 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2015",
+    "target": "ES2017",
     "module": "ES2020",
     "lib": [
-      "ES2018",
+      "ES2020",
       "dom"
     ],
     "paths": {
-      "ngx-custom-tooltip": ["projects/ngx-custom-tooltip/src/public-api.ts"]
+      "ngx-custom-tooltip": [
+        "projects/ngx-custom-tooltip/src/public-api.ts"
+      ]
     },
     "skipLibCheck": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
