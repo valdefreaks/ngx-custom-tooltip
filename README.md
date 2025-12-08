@@ -10,9 +10,9 @@ It has a `ng-content` tag, so you can place all kinds of html elements inside th
 
 ## Compatibility
 
-| NgxCustomTooltip | Angular     | Node        |
-|------------------|-------------|-------------|
-| 1.x.x            | 10.x.x      | 16.20.2     |
+| NgxCustomTooltip | Angular            | Node        |
+|------------------|--------------------|-------------|
+| 1.x.x            | => 9.0.0 <= 11.x.x | 16.20.2     |
 
 ## Get Started
 

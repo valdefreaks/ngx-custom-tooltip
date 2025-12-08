@@ -7,12 +7,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    NgxCustomTooltipModule,
-    NgxCustomTooltipModule,
-  ],
+  imports: [BrowserModule, CommonModule, NgxCustomTooltipModule],
   providers: [],
   bootstrap: [AppComponent],
 })
