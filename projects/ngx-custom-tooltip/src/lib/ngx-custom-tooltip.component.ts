@@ -190,7 +190,7 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
    * Si no se define, se usa el mismo color que `bgColor`.
    * @default undefined
    */
-  @Input() triangleBgColor: string;
+  @Input() triangleBgColor?: string;
 
   /**
    * Evento emitido cuando el tooltip se cierra.
@@ -201,7 +201,7 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   /**
    * ElementRef del pop-up HTML.
    */
-  @ViewChild('popUp') popUpElement?: ElementRef<HTMLElement>;
+  @ViewChild('popUp', { static: false }) popUpElement?: ElementRef<HTMLElement>;
 
   /**
    * Medidas y posición del pop-up
@@ -334,9 +334,9 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   }
 
   setPositions(): void {
-    this.targetBounding = this.target.getBoundingClientRect();
+    this.targetBounding = this.target!.getBoundingClientRect();
     const popUpNative: HTMLElement = this.renderer.selectRootElement(
-      this.popUpElement.nativeElement,
+      this.popUpElement!.nativeElement,
       true,
     );
 

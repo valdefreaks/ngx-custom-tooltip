@@ -2,16 +2,25 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
-    "target": "es2015",
+    "target": "ES2015",
     "declaration": true,
+    "declarationMap": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "lib": [
+      "ES2018",
+      "dom"
+    ]
   },
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
-    "enableResourceInlining": true
+    "enableResourceInlining": true,
+    "skipTemplateCodegen": false,
+    "flatModuleOutFile": "ngx-custom-tooltip.js",
+    "flatModuleId": "ngx-custom-tooltip"
   },
-  "exclude": ["**/*.spec.ts"]
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts"
+  ]
 }
