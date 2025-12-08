@@ -1,7 +1,5 @@
 # ngx-custom-tooltip
 
-> This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.13.
-
 ## About
 
 **Simple and customizable tooltip/pop-up component for Angular projects.**  
