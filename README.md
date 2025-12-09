@@ -110,15 +110,14 @@ Git hooks are configured automatically when installing dependencies.
 
 ## 📄 Compatibility
 
-| NgxCustomTooltip | Angular            | Node        |
-|------------------|--------------------|-------------|
-| 1.x.x            | => 9.0.0 <= 12.x.x | 16.20.2+    |
+| NgxCustomTooltip | Angular           |
+|------------------|-------------------|
+| 0.x.x            | ^9.0.0            |
+| 1.x.x            | => 9.0.0 < 14.0.0 |
 
 ## 🐛 Report Issues
 
-If you find any issues or have suggestions for improvement, please report them at:
-
-👉 [GitHub Issues](https://github.com/valdefreaks/ngx-custom-tooltip/issues)
+If you find any issues or have suggestions for improvement, please report them [here.](https://github.com/valdefreaks/ngx-custom-tooltip/issues)
 
 When reporting an issue, include:
 - Clear description of the problem

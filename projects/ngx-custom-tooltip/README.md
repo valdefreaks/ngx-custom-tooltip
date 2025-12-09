@@ -8,9 +8,10 @@ It has a `ng-content` tag, so you can place all kinds of html elements inside th
 
 ## Compatibility
 
-| NgxCustomTooltip | Angular            |
-|------------------|--------------------|
-| 1.x.x            | => 9.0.0 <= 12.x.x |
+| NgxCustomTooltip | Angular             |
+|------------------|---------------------|
+| 0.x.x            | ^9.0.0              |
+| 1.x.x            | => 9.0.0 < 14.0.0   |
 
 ## Get Started
 
@@ -69,5 +70,23 @@ export class AppModule { }
 | `triangleBgColor`   | `string`      | `undefined`     | `background-color` property for the triangle. If not provided, `bgColor` is used.                                                         |
 | `(closeEmitter)`    | `boolean`     |                 | Emit `false` when tooltip is closed.                                                                                                      |
 
-##Issues
-If you find any issues, please report them [here.](https://github.com/valdefreaks/ngx-custom-tooltip/issues)
+## Report Issues
+
+If you find any issues or have suggestions for improvement, please report them [here.](https://github.com/valdefreaks/ngx-custom-tooltip/issues)
+
+When reporting an issue, include:
+- Clear description of the problem
+- Angular and library version you're using
+- Steps to reproduce the issue
+- Expected behavior vs actual behavior
+- Screenshots or code examples if possible
+
+## License
+
+This project is under the MIT license. See the LICENSE file for more details.
+
+## Author
+
+**Valdemar Farina**
+
+- GitHub: [@valdefreaks](https://github.com/valdefreaks)
