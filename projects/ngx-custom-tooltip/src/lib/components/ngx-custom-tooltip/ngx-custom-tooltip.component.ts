@@ -13,57 +13,20 @@ import {
   ViewChild,
 } from '@angular/core';
 
-interface SimpleRect {
-  top: number;
-  right: number;
-  bottom: number;
-  left: number;
-  width: number;
-  height: number;
-  x: number;
-  y: number;
-}
-
-export type PopUpPositionKey =
-  | 'topStart'
-  | 'topCenter'
-  | 'topEnd'
-  | 'rightStart'
-  | 'rightCenter'
-  | 'rightEnd'
-  | 'bottomStart'
-  | 'bottomCenter'
-  | 'bottomEnd'
-  | 'leftStart'
-  | 'leftCenter'
-  | 'leftEnd';
-
-type PopUpPositionKebabCaseKey =
-  | 'top-start'
-  | 'top-center'
-  | 'top-end'
-  | 'right-start'
-  | 'right-center'
-  | 'right-end'
-  | 'bottom-start'
-  | 'bottom-center'
-  | 'bottom-end'
-  | 'left-start'
-  | 'left-center'
-  | 'left-end';
-
-function isEqualRect(a: SimpleRect, b: SimpleRect): boolean {
-  return (
-    a.top === b.top &&
-    a.right === b.right &&
-    a.bottom === b.bottom &&
-    a.left === b.left &&
-    a.width === b.width &&
-    a.height === b.height &&
-    a.x === b.x &&
-    a.y === b.y
-  );
-}
+import {
+  PopUpPositionKebabCaseKey,
+  PopUpPositionKey,
+  SimpleRect,
+} from '../../models';
+import {
+  calculatePopUpLeftPosition,
+  calculatePopUpTopPosition,
+  calculateTriangleBottomPosition,
+  calculateTriangleLeftPosition,
+  calculateTriangleRightPosition,
+  calculateTriangleTopPosition,
+  isEqualRect,
+} from '../../utils/calculate-positions';
 
 @Component({
   selector: 'ngx-custom-tooltip',
@@ -341,12 +304,44 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
     );
 
     this.popUpBounding = popUpNative.getBoundingClientRect();
-    this.popUpTopProperty = this.calculatePopUpTopPosition();
-    this.popUpLeftProperty = this.calculatePopUpLeftPosition();
-    this.triangleTopPosition = this.calculateTriangleTopPosition();
-    this.triangleBottomPosition = this.calculateTriangleBottomPosition();
-    this.triangleLeftPosition = this.calculateTriangleLeftPosition();
-    this.triangleRightPosition = this.calculateTriangleRightPosition();
+
+    this.popUpTopProperty = calculatePopUpTopPosition(
+      this.targetBounding,
+      this.popUpBounding,
+      this.floatingSize,
+      this.displacement,
+      this.popUpPosition,
+    );
+    this.popUpLeftProperty = calculatePopUpLeftPosition(
+      this.targetBounding,
+      this.popUpBounding,
+      this.floatingSize,
+      this.displacement,
+      this.popUpPosition,
+    );
+    this.triangleTopPosition = calculateTriangleTopPosition(
+      this.targetBounding,
+      this.popUpBounding,
+      this.displacement,
+      this.popUpPosition,
+    );
+    this.triangleBottomPosition = calculateTriangleBottomPosition(
+      this.targetBounding,
+      this.displacement,
+      this.popUpPosition,
+    );
+    this.triangleLeftPosition = calculateTriangleLeftPosition(
+      this.targetBounding,
+      this.popUpBounding,
+      this.displacement,
+      this.popUpPosition,
+    );
+    this.triangleRightPosition = calculateTriangleRightPosition(
+      this.targetBounding,
+      this.displacement,
+      this.popUpPosition,
+    );
+
     this.cdr.detectChanges();
   }
 
@@ -356,192 +351,6 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   }): void {
     event.preventDefault();
     event.stopPropagation();
-  }
-
-  /**
-   * Calcula la posición `top` del pop-up según la posición seleccionada.
-   */
-  private calculatePopUpTopPosition(): string {
-    const setPopUpTopPosition: Record<PopUpPositionKey, string> = {
-      topStart: `${
-        this.targetBounding!.top -
-        this.popUpBounding!.height -
-        this.floatingSize
-      }px`,
-      topCenter: `${
-        this.targetBounding!.top -
-        this.popUpBounding!.height -
-        this.floatingSize
-      }px`,
-      topEnd: `${
-        this.targetBounding!.top -
-        this.popUpBounding!.height -
-        this.floatingSize
-      }px`,
-      rightStart: `${this.targetBounding!.top - 11 - this.displacement}px`,
-      rightCenter: `${
-        this.targetBounding!.top +
-        this.targetBounding!.height / 2 -
-        this.popUpBounding!.height / 2
-      }px`,
-      rightEnd: `${
-        this.targetBounding!.bottom -
-        this.popUpBounding!.height +
-        10 +
-        this.displacement
-      }px`,
-      bottomStart: `${this.targetBounding!.bottom + this.floatingSize}px`,
-      bottomCenter: `${this.targetBounding!.bottom + this.floatingSize}px`,
-      bottomEnd: `${this.targetBounding!.bottom + this.floatingSize}px`,
-      leftStart: `${this.targetBounding!.top - 11 - this.displacement}px`,
-      leftCenter: `${
-        this.targetBounding!.top +
-        this.targetBounding!.height / 2 -
-        this.popUpBounding!.height / 2
-      }px`,
-      leftEnd: `${
-        this.targetBounding!.bottom -
-        this.popUpBounding!.height +
-        10 +
-        this.displacement
-      }px`,
-    };
-    return setPopUpTopPosition[this.popUpPosition];
-  }
-
-  /**
-   * Calcula la posición `left` del pop-up según la posición seleccionada.
-   */
-  private calculatePopUpLeftPosition(): string {
-    const setPopUpLeftPosition: Record<PopUpPositionKey, string> = {
-      topStart: `${this.targetBounding!.left - 10 - this.displacement}px`,
-      topCenter: `${
-        this.targetBounding!.left +
-        this.targetBounding!.width / 2 -
-        this.popUpBounding!.width / 2
-      }px`,
-      topEnd: `${
-        this.targetBounding!.right -
-        this.popUpBounding!.width +
-        10 +
-        this.displacement
-      }px`,
-      rightStart: `${this.targetBounding!.right + this.floatingSize}px`,
-      rightCenter: `${this.targetBounding!.right + this.floatingSize}px`,
-      rightEnd: `${this.targetBounding!.right + this.floatingSize}px`,
-      bottomStart: `${this.targetBounding!.left - 10 - this.displacement}px`,
-      bottomCenter: `${
-        this.targetBounding!.left +
-        this.targetBounding!.width / 2 -
-        this.popUpBounding!.width / 2
-      }px`,
-      bottomEnd: `${
-        this.targetBounding!.right -
-        this.popUpBounding!.width +
-        11 +
-        this.displacement
-      }px`,
-      leftStart: `${
-        this.targetBounding!.left -
-        this.popUpBounding!.width -
-        this.floatingSize
-      }px`,
-      leftCenter: `${
-        this.targetBounding!.left -
-        this.popUpBounding!.width -
-        this.floatingSize
-      }px`,
-      leftEnd: `${
-        this.targetBounding!.left -
-        this.popUpBounding!.width -
-        this.floatingSize
-      }px`,
-    };
-    return setPopUpLeftPosition[this.popUpPosition];
-  }
-
-  /**
-   * Calcula la posición `top` del triángulo del pop-up según la posición seleccionada.
-   */
-  private calculateTriangleTopPosition(): string {
-    const position: Record<PopUpPositionKey, string> = {
-      topStart: 'auto',
-      topCenter: 'auto',
-      topEnd: 'auto',
-      bottomStart: '3px',
-      bottomCenter: '3px',
-      bottomEnd: '3px',
-      leftStart: `${this.targetBounding!.height / 2 + 3 + this.displacement}px`,
-      leftCenter: `${this.popUpBounding!.height / 2 - 8}px`,
-      leftEnd: 'auto',
-      rightStart: `${this.targetBounding!.height / 2 + 3 + this.displacement}px`,
-      rightCenter: `${this.popUpBounding!.height / 2 - 5}px`,
-      rightEnd: 'auto',
-    };
-    return position[this.popUpPosition];
-  }
-
-  /**
-   * Calcula la posición `top` del triángulo del pop-up según la posición seleccionada.
-   */
-  private calculateTriangleBottomPosition(): string {
-    const position: Record<PopUpPositionKey, string> = {
-      topStart: '3px',
-      topCenter: '3px',
-      topEnd: '3px',
-      bottomStart: 'auto',
-      bottomCenter: 'auto',
-      bottomEnd: 'auto',
-      leftStart: 'auto',
-      leftCenter: 'auto',
-      leftEnd: `${this.targetBounding!.height / 2 + 5 + this.displacement}px`,
-      rightStart: 'auto',
-      rightCenter: 'auto',
-      rightEnd: `${this.targetBounding!.height / 2 + 5 + this.displacement}px`,
-    };
-    return position[this.popUpPosition];
-  }
-
-  /**
-   * Calcula la posición `left` del triángulo del pop-up según la posición seleccionada.
-   */
-  private calculateTriangleLeftPosition(): string {
-    const position: Record<PopUpPositionKey, string> = {
-      topStart: `${this.targetBounding!.width / 2 + 4 + this.displacement}px`,
-      topCenter: `${this.popUpBounding!.width / 2 - 7}px`,
-      topEnd: 'auto',
-      bottomStart: `${this.targetBounding!.width / 2 + 4 + this.displacement}px`,
-      bottomCenter: `${this.popUpBounding!.width / 2 - 6}px`,
-      bottomEnd: 'auto',
-      leftStart: 'auto',
-      leftCenter: 'auto',
-      leftEnd: 'auto',
-      rightStart: '3px',
-      rightCenter: '3px',
-      rightEnd: '3px',
-    };
-    return position[this.popUpPosition];
-  }
-
-  /**
-   * Calcula la posición `right` del triángulo del pop-up según la posición seleccionada.
-   */
-  private calculateTriangleRightPosition(): string {
-    const position: Record<PopUpPositionKey, string> = {
-      topStart: 'auto',
-      topCenter: 'auto',
-      topEnd: `${this.targetBounding!.width / 2 + 3 + this.displacement}px`,
-      bottomStart: 'auto',
-      bottomCenter: 'auto',
-      bottomEnd: `${this.targetBounding!.width / 2 + 3 + this.displacement}px`,
-      leftStart: '3px',
-      leftCenter: '3px',
-      leftEnd: '3px',
-      rightStart: 'auto',
-      rightCenter: 'auto',
-      rightEnd: 'auto',
-    };
-    return position[this.popUpPosition];
   }
 
   private mappingPopUpPositionToCssClass(): PopUpPositionKebabCaseKey {
