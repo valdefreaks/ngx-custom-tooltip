@@ -68,3 +68,6 @@ export class AppModule { }
 | `target`            | `HTMLElement` | `undefined`     | The HTMLEelement that activates the tooltip. If `closeButton` is `false` the `target` is excluded for the clickout event that close the button. |
 | `triangleBgColor`   | `string`      | `undefined`     | `background-color` property for the triangle. If not provided, `bgColor` is used.                                                         |
 | `(closeEmitter)`    | `boolean`     |                 | Emit `false` when tooltip is closed.                                                                                                      |
+
+##Issues
+If you find any issues, please report them [here.](https://github.com/valdefreaks/ngx-custom-tooltip/issues)
