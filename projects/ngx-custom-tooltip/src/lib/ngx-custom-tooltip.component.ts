@@ -318,12 +318,12 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
        */
       const last = (): SimpleRect => {
         const { top, right, bottom, left, width, height, x, y } =
-          this.targetBounding!;
+          this.targetBounding;
         return { top, right, bottom, left, width, height, x, y };
       };
       const news = (): SimpleRect => {
         const { top, right, bottom, left, width, height, x, y } =
-          this.target!.getBoundingClientRect();
+          this.target.getBoundingClientRect();
         return { top, right, bottom, left, width, height, x, y };
       };
 
@@ -334,9 +334,9 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   }
 
   setPositions(): void {
-    this.targetBounding = this.target!.getBoundingClientRect();
+    this.targetBounding = this.target.getBoundingClientRect();
     const popUpNative: HTMLElement = this.renderer.selectRootElement(
-      this.popUpElement!.nativeElement,
+      this.popUpElement.nativeElement,
       true,
     );
 
@@ -364,44 +364,38 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   private calculatePopUpTopPosition(): string {
     const setPopUpTopPosition: Record<PopUpPositionKey, string> = {
       topStart: `${
-        this.targetBounding!.top -
-        this.popUpBounding!.height -
-        this.floatingSize
+        this.targetBounding.top - this.popUpBounding.height - this.floatingSize
       }px`,
       topCenter: `${
-        this.targetBounding!.top -
-        this.popUpBounding!.height -
-        this.floatingSize
+        this.targetBounding.top - this.popUpBounding.height - this.floatingSize
       }px`,
       topEnd: `${
-        this.targetBounding!.top -
-        this.popUpBounding!.height -
-        this.floatingSize
+        this.targetBounding.top - this.popUpBounding.height - this.floatingSize
       }px`,
-      rightStart: `${this.targetBounding!.top - 11 - this.displacement}px`,
+      rightStart: `${this.targetBounding.top - 11 - this.displacement}px`,
       rightCenter: `${
-        this.targetBounding!.top +
-        this.targetBounding!.height / 2 -
-        this.popUpBounding!.height / 2
+        this.targetBounding.top +
+        this.targetBounding.height / 2 -
+        this.popUpBounding.height / 2
       }px`,
       rightEnd: `${
-        this.targetBounding!.bottom -
-        this.popUpBounding!.height +
+        this.targetBounding.bottom -
+        this.popUpBounding.height +
         10 +
         this.displacement
       }px`,
-      bottomStart: `${this.targetBounding!.bottom + this.floatingSize}px`,
-      bottomCenter: `${this.targetBounding!.bottom + this.floatingSize}px`,
-      bottomEnd: `${this.targetBounding!.bottom + this.floatingSize}px`,
-      leftStart: `${this.targetBounding!.top - 11 - this.displacement}px`,
+      bottomStart: `${this.targetBounding.bottom + this.floatingSize}px`,
+      bottomCenter: `${this.targetBounding.bottom + this.floatingSize}px`,
+      bottomEnd: `${this.targetBounding.bottom + this.floatingSize}px`,
+      leftStart: `${this.targetBounding.top - 11 - this.displacement}px`,
       leftCenter: `${
-        this.targetBounding!.top +
-        this.targetBounding!.height / 2 -
-        this.popUpBounding!.height / 2
+        this.targetBounding.top +
+        this.targetBounding.height / 2 -
+        this.popUpBounding.height / 2
       }px`,
       leftEnd: `${
-        this.targetBounding!.bottom -
-        this.popUpBounding!.height +
+        this.targetBounding.bottom -
+        this.popUpBounding.height +
         10 +
         this.displacement
       }px`,
@@ -414,47 +408,41 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
    */
   private calculatePopUpLeftPosition(): string {
     const setPopUpLeftPosition: Record<PopUpPositionKey, string> = {
-      topStart: `${this.targetBounding!.left - 10 - this.displacement}px`,
+      topStart: `${this.targetBounding.left - 10 - this.displacement}px`,
       topCenter: `${
-        this.targetBounding!.left +
-        this.targetBounding!.width / 2 -
-        this.popUpBounding!.width / 2
+        this.targetBounding.left +
+        this.targetBounding.width / 2 -
+        this.popUpBounding.width / 2
       }px`,
       topEnd: `${
-        this.targetBounding!.right -
-        this.popUpBounding!.width +
+        this.targetBounding.right -
+        this.popUpBounding.width +
         10 +
         this.displacement
       }px`,
-      rightStart: `${this.targetBounding!.right + this.floatingSize}px`,
-      rightCenter: `${this.targetBounding!.right + this.floatingSize}px`,
-      rightEnd: `${this.targetBounding!.right + this.floatingSize}px`,
-      bottomStart: `${this.targetBounding!.left - 10 - this.displacement}px`,
+      rightStart: `${this.targetBounding.right + this.floatingSize}px`,
+      rightCenter: `${this.targetBounding.right + this.floatingSize}px`,
+      rightEnd: `${this.targetBounding.right + this.floatingSize}px`,
+      bottomStart: `${this.targetBounding.left - 10 - this.displacement}px`,
       bottomCenter: `${
-        this.targetBounding!.left +
-        this.targetBounding!.width / 2 -
-        this.popUpBounding!.width / 2
+        this.targetBounding.left +
+        this.targetBounding.width / 2 -
+        this.popUpBounding.width / 2
       }px`,
       bottomEnd: `${
-        this.targetBounding!.right -
-        this.popUpBounding!.width +
+        this.targetBounding.right -
+        this.popUpBounding.width +
         11 +
         this.displacement
       }px`,
       leftStart: `${
-        this.targetBounding!.left -
-        this.popUpBounding!.width -
-        this.floatingSize
+        this.targetBounding.left - this.popUpBounding.width - this.floatingSize
       }px`,
       leftCenter: `${
-        this.targetBounding!.left -
-        this.popUpBounding!.width -
-        this.floatingSize
+        this.targetBounding.left - this.popUpBounding.width - this.floatingSize
       }px`,
       leftEnd: `${
-        this.targetBounding!.left -
-        this.popUpBounding!.width -
-        this.floatingSize
+        this.targetBounding.left - this.popUpBounding.width - this.floatingSize
       }px`,
     };
     return setPopUpLeftPosition[this.popUpPosition];
@@ -471,11 +459,11 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
       bottomStart: '3px',
       bottomCenter: '3px',
       bottomEnd: '3px',
-      leftStart: `${this.targetBounding!.height / 2 + 3 + this.displacement}px`,
-      leftCenter: `${this.popUpBounding!.height / 2 - 8}px`,
+      leftStart: `${this.targetBounding.height / 2 + 3 + this.displacement}px`,
+      leftCenter: `${this.popUpBounding.height / 2 - 8}px`,
       leftEnd: 'auto',
-      rightStart: `${this.targetBounding!.height / 2 + 3 + this.displacement}px`,
-      rightCenter: `${this.popUpBounding!.height / 2 - 5}px`,
+      rightStart: `${this.targetBounding.height / 2 + 3 + this.displacement}px`,
+      rightCenter: `${this.popUpBounding.height / 2 - 5}px`,
       rightEnd: 'auto',
     };
     return position[this.popUpPosition];
@@ -494,10 +482,10 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
       bottomEnd: 'auto',
       leftStart: 'auto',
       leftCenter: 'auto',
-      leftEnd: `${this.targetBounding!.height / 2 + 5 + this.displacement}px`,
+      leftEnd: `${this.targetBounding.height / 2 + 5 + this.displacement}px`,
       rightStart: 'auto',
       rightCenter: 'auto',
-      rightEnd: `${this.targetBounding!.height / 2 + 5 + this.displacement}px`,
+      rightEnd: `${this.targetBounding.height / 2 + 5 + this.displacement}px`,
     };
     return position[this.popUpPosition];
   }
@@ -507,11 +495,11 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
    */
   private calculateTriangleLeftPosition(): string {
     const position: Record<PopUpPositionKey, string> = {
-      topStart: `${this.targetBounding!.width / 2 + 4 + this.displacement}px`,
-      topCenter: `${this.popUpBounding!.width / 2 - 7}px`,
+      topStart: `${this.targetBounding.width / 2 + 4 + this.displacement}px`,
+      topCenter: `${this.popUpBounding.width / 2 - 7}px`,
       topEnd: 'auto',
-      bottomStart: `${this.targetBounding!.width / 2 + 4 + this.displacement}px`,
-      bottomCenter: `${this.popUpBounding!.width / 2 - 6}px`,
+      bottomStart: `${this.targetBounding.width / 2 + 4 + this.displacement}px`,
+      bottomCenter: `${this.popUpBounding.width / 2 - 6}px`,
       bottomEnd: 'auto',
       leftStart: 'auto',
       leftCenter: 'auto',
@@ -530,10 +518,10 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
     const position: Record<PopUpPositionKey, string> = {
       topStart: 'auto',
       topCenter: 'auto',
-      topEnd: `${this.targetBounding!.width / 2 + 3 + this.displacement}px`,
+      topEnd: `${this.targetBounding.width / 2 + 3 + this.displacement}px`,
       bottomStart: 'auto',
       bottomCenter: 'auto',
-      bottomEnd: `${this.targetBounding!.width / 2 + 3 + this.displacement}px`,
+      bottomEnd: `${this.targetBounding.width / 2 + 3 + this.displacement}px`,
       leftStart: '3px',
       leftCenter: '3px',
       leftEnd: '3px',
