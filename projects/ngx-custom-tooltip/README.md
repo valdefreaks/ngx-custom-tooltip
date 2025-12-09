@@ -12,6 +12,7 @@ It has a `ng-content` tag, so you can place all kinds of html elements inside th
 |------------------|---------------------|
 | 0.x.x            | ^9.0.0              |
 | 1.x.x            | => 9.0.0 < 14.0.0   |
+| 2.x.x            | ^14.0.0             |
 
 ## Get Started
 
@@ -21,21 +22,38 @@ It has a `ng-content` tag, so you can place all kinds of html elements inside th
 npm install ngx-custom-tooltip
 ```
 
-**Step 2:** Import NgxCustomTooltipModule module into your **_app.module.ts_**
+**Step 2:** Import NgxCustomTooltipModule module into your **_app.module.ts_** or into a specific module where you want to use it.
 
 ```ts
 ....
 import { NgxCustomTooltipModule } from 'ngx-custom-tooltip';
 ....
 @NgModule({
-    ...
-    imports: [
-        ....
-        NgxCustomTooltipModule
-    ],
+  ...
+  imports: [
     ....
+    NgxCustomTooltipModule
+  ],
+  ....
 })
 export class AppModule { }
+```
+
+If you have a standalone app instead, import the NgxCustomTooltipComponent into your **_example.component.ts_**.
+```ts
+....
+import { NgxCustomTooltipComponent } from 'ngx-custom-tooltip';
+....
+@Component({
+  ...
+  standalone: true,
+  imports: [
+    ....
+    NgxCustomTooltipComponent,
+  ],
+  ....
+})
+export class ExampleComponent { }
 ```
 
 **Step 3:** Wrap _ngx-custom-tooltip_ tag around your elements in your **_example.component.html_** file

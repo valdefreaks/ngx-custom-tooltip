@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -33,6 +34,8 @@ import {
   templateUrl: './ngx-custom-tooltip.component.html',
   styleUrls: ['./ngx-custom-tooltip.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf],
 })
 export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   /**
