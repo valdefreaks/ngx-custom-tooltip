@@ -1,8 +1,0 @@
-.angular
-node_modules
-.idea
-.husky
-dist
-coverage
-*.d.ts
-
