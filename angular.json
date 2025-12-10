@@ -87,18 +87,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "demo-app:build"
+            "buildTarget": "demo-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo-app:build:production"
+              "buildTarget": "demo-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo-app:build"
+            "buildTarget": "demo-app:build"
           }
         },
         "test": {
@@ -216,10 +216,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "demo-app-standalone:build:production"
+              "buildTarget": "demo-app-standalone:build:production"
             },
             "development": {
-              "browserTarget": "demo-app-standalone:build:development"
+              "buildTarget": "demo-app-standalone:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -227,7 +227,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo-app-standalone:build"
+            "buildTarget": "demo-app-standalone:build"
           }
         },
         "test": {
