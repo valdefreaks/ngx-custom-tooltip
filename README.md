@@ -124,6 +124,7 @@ Git hooks are configured automatically when installing dependencies.
 | 2.1.x            | => 14.0.0 < 16.0.0 |
 | 2.2.x            | => 14.0.0 < 17.0.0 |
 | 2.3.x            | => 14.0.0 < 18.0.0 |
+| 2.4.x            | => 14.0.0 < 19.0.0 |
 
 ## 🐛 Report Issues
 

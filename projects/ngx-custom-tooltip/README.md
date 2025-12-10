@@ -19,6 +19,7 @@ It has a `ng-content` tag, so you can place all kinds of html elements inside th
 | 2.1.x            | => 14.0.0 < 16.0.0 |
 | 2.2.x            | => 14.0.0 < 17.0.0 |
 | 2.3.x            | => 14.0.0 < 18.0.0 |
+| 2.4.x            | => 14.0.0 < 19.0.0 |
 
 ## Get Started
 
