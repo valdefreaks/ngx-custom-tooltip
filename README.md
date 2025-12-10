@@ -117,7 +117,7 @@ Git hooks are configured automatically when installing dependencies.
 |------------------|--------------------|
 | 0.x.x            | ^9.0.0             |
 | 1.x.x            | => 9.0.0 < 14.0.0  |
-| 2.x.x            | => 14.0.0 < 17.0.0 |
+| 2.x.x            | => 14.0.0 < 18.0.0 |
 
 ## 🐛 Report Issues
 
