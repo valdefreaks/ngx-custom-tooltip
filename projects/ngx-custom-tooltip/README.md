@@ -8,11 +8,11 @@ It has a `ng-content` tag, so you can place all kinds of html elements inside th
 
 ## Compatibility
 
-| NgxCustomTooltip | Angular             |
-|------------------|---------------------|
-| 0.x.x            | ^9.0.0              |
-| 1.x.x            | => 9.0.0 < 14.0.0   |
-| 2.x.x            | ^14.0.0             |
+| NgxCustomTooltip | Angular              |
+|------------------|----------------------|
+| 0.x.x            | ^9.0.0               |
+| 1.x.x            | => 9.0.0 < 14.0.0    |
+| 2.x.x            | => 14.0.0 < 16.0.0   |
 
 ## Get Started
 

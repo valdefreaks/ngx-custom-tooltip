@@ -66,8 +66,11 @@ npm run lint
 # Automatically fix linting issues
 npm run lint:fix
 
-# Analyze and fix CSS files
+# Analyze CSS files
 npm run lint:css
+
+# Analyze and fix CSS files
+npm run lint:css:fix
 
 # Format code with Prettier
 npm run format
@@ -110,11 +113,11 @@ Git hooks are configured automatically when installing dependencies.
 
 ## 📄 Compatibility
 
-| NgxCustomTooltip | Angular           |
-|------------------|-------------------|
-| 0.x.x            | ^9.0.0            |
-| 1.x.x            | => 9.0.0 < 14.0.0 |
-| 2.x.x            | ^14.0.0           |
+| NgxCustomTooltip | Angular            |
+|------------------|--------------------|
+| 0.x.x            | ^9.0.0             |
+| 1.x.x            | => 9.0.0 < 14.0.0  |
+| 2.x.x            | => 14.0.0 < 16.0.0 |
 
 ## 🐛 Report Issues
 
