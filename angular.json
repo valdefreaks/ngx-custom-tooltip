@@ -39,12 +39,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/demo-app",
+            "outputPath": {
+              "base": "dist/demo-app"
+            },
             "index": "projects/demo-app/src/index.html",
-            "main": "projects/demo-app/src/main.ts",
-            "polyfills": "projects/demo-app/src/polyfills.ts",
+            "polyfills": [
+              "projects/demo-app/src/polyfills.ts"
+            ],
             "tsConfig": "projects/demo-app/tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -52,7 +55,8 @@
               "projects/demo-app/src/assets"
             ],
             "styles": ["projects/demo-app/src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/demo-app/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -67,8 +71,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -163,12 +165,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/demo-app-standalone",
+            "outputPath": {
+              "base": "dist/demo-app-standalone"
+            },
             "index": "projects/demo-app-standalone/src/index.html",
-            "main": "projects/demo-app-standalone/src/main.ts",
-            "polyfills": "projects/demo-app-standalone/src/polyfills.ts",
+            "polyfills": [
+              "projects/demo-app-standalone/src/polyfills.ts"
+            ],
             "tsConfig": "projects/demo-app-standalone/tsconfig.app.json",
             "assets": [
               "projects/demo-app-standalone/src/favicon.ico",
@@ -177,7 +182,8 @@
             "styles": [
               "projects/demo-app-standalone/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/demo-app-standalone/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -202,9 +208,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
