@@ -7,17 +7,10 @@
     "declarationMap": true,
     "inlineSources": true,
     "types": [],
-    "lib": [
-      "ES2020",
-      "dom"
-    ]
   },
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
     "enableResourceInlining": true
   },
-  "exclude": [
-    "src/test.ts",
-    "src/**/*.spec.ts"
-  ]
+  "exclude": ["src/test.ts", "src/**/*.spec.ts"]
 }

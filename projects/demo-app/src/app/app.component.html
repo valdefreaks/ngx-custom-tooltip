@@ -414,19 +414,20 @@
   <h1>Demo ngx-custom-tooltip</h1>
 
   <button #btn (click)="show = true">Pasa el mouse por aquí</button>
-  <ngx-custom-tooltip
-    *ngIf="show"
-    [displacement]="0"
-    [target]="btn"
-    popUpPosition="topCenter"
-    bgColor="#333"
-    triangleBgColor="#333"
-    borderColor="#333"
-    padding="12px 16px"
-    (closeEmitter)="show = false"
-  >
-    <span style="color: #fff">Hola, soy un tooltip de prueba 😀</span>
-  </ngx-custom-tooltip>
+  @if (show) {
+    <ngx-custom-tooltip
+      [displacement]="0"
+      [target]="btn"
+      popUpPosition="topCenter"
+      bgColor="#333"
+      triangleBgColor="#333"
+      borderColor="#333"
+      padding="12px 16px"
+      (closeEmitter)="show = false"
+    >
+      <span style="color: #fff">Hola, soy un tooltip de prueba 😀</span>
+    </ngx-custom-tooltip>
+  }
 
   <!-- Resources -->
   <h2>Resources</h2>
@@ -640,13 +641,27 @@
   </div>
 
   <!-- Terminal -->
-  <div class="terminal" [ngSwitch]="selection.value">
-    <pre *ngSwitchDefault>ng generate component xyz</pre>
-    <pre *ngSwitchCase="'material'">ng add &#64;angular/material</pre>
-    <pre *ngSwitchCase="'pwa'">ng add &#64;angular/pwa</pre>
-    <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-    <pre *ngSwitchCase="'test'">ng test</pre>
-    <pre *ngSwitchCase="'build'">ng build --prod</pre>
+  <div class="terminal">
+    @switch (selection.value) {
+      @default {
+        <pre>ng generate component xyz</pre>
+      }
+      @case ('material') {
+        <pre>ng add &#64;angular/material</pre>
+      }
+      @case ('pwa') {
+        <pre>ng add &#64;angular/pwa</pre>
+      }
+      @case ('dependency') {
+        <pre>ng add _____</pre>
+      }
+      @case ('test') {
+        <pre>ng test</pre>
+      }
+      @case ('build') {
+        <pre>ng build --prod</pre>
+      }
+    }
   </div>
 
   <!-- Highlight Card -->
@@ -931,13 +946,27 @@
   </div>
 
   <!-- Terminal -->
-  <div class="terminal" [ngSwitch]="selection.value">
-    <pre *ngSwitchDefault>ng generate component xyz</pre>
-    <pre *ngSwitchCase="'material'">ng add &#64;angular/material</pre>
-    <pre *ngSwitchCase="'pwa'">ng add &#64;angular/pwa</pre>
-    <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-    <pre *ngSwitchCase="'test'">ng test</pre>
-    <pre *ngSwitchCase="'build'">ng build --prod</pre>
+  <div class="terminal">
+    @switch (selection.value) {
+      @default {
+        <pre>ng generate component xyz</pre>
+      }
+      @case ('material') {
+        <pre>ng add &#64;angular/material</pre>
+      }
+      @case ('pwa') {
+        <pre>ng add &#64;angular/pwa</pre>
+      }
+      @case ('dependency') {
+        <pre>ng add _____</pre>
+      }
+      @case ('test') {
+        <pre>ng test</pre>
+      }
+      @case ('build') {
+        <pre>ng build --prod</pre>
+      }
+    }
   </div>
 
   <!-- Links -->
