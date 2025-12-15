@@ -81,7 +81,7 @@ export class ExampleComponent { }
 | ------------------- | ------------------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `bgColor`           | `string`           | `'#ffffff'`     | `background-color` property for the tooltip.                                                                                                    |
 | `borderColor`       | `string`           | `'#d3d3d3'`     | `border-color` property for the tooltip.                                                                                                        |
-| `borderRadius`      | `string`           | `'4px'`         | `border-radious` property for the tooltip. Accepts css syntax.                                                                                  |
+| `borderRadius`      | `string`           | `'4px'`         | `border-radius` property for the tooltip. Accepts css syntax.                                                                                   |
 | `closeButton`       | `boolean`          | `false`         | Indicates if the tooltip has a close button. If false, it closes when you click outside of it.                                                  |
 | `closeButtonImage`  | `string`           | `undefined`     | Image path for close button.                                                                                                                    |
 | `closeButtonMargin` | `string`           | `'20px'`        | Separation of the close button from the border. By default it is placed in the upper right corner. Accepts css syntax.                          |
