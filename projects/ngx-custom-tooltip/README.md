@@ -85,7 +85,7 @@ export class ExampleComponent { }
 | `closeButton`       | `boolean`          | `false`         | Indicates if the tooltip has a close button. If false, it closes when you click outside of it.                                                  |
 | `closeButtonImage`  | `string`           | `undefined`     | Image path for close button.                                                                                                                    |
 | `closeButtonMargin` | `string`           | `'20px'`        | Separation of the close button from the border. By default it is placed in the upper right corner. Accepts css syntax.                          |
-| `closeButtonSize`   | `string`           | `'20px'`        | `height` and `widht` properties for the close button. Accepts css syntax.                                                                       |
+| `closeButtonSize`   | `string`           | `'20px'`        | `height` and `width` properties for the close button. Accepts css syntax.                                                                       |
 | `displacement`      | `number`           | `0`             | Arbitrary offset of the tooltip from its target. It is ignored if a `center` type position is chosen.                                           |
 | `floatingSize`      | `number`           | `3`             | Move the tooltip away from its target.                                                                                                          |
 | `maxHeight`         | `string`           | `'max-content'` | Maximum height, after that, a vertical scroll appears. Accepts css syntax.                                                                      |
