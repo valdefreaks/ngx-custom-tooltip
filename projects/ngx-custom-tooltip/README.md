@@ -90,8 +90,8 @@ export class ExampleComponent { }
 | `floatingSize`      | `number`           | `3`             | Move the tooltip away from its target.                                                                                                          |
 | `maxHeight`         | `string`           | `'max-content'` | Maximum height, after that, a vertical scroll appears. Accepts css syntax.                                                                      |
 | `maxWidth`          | `string`           | `'max-content'` | Maximum width, after that, a horizontal scroll appears. Accepts css syntax.                                                                     |
-| `minHeight`         | `string`           | `'auto'`        | Minimun height for the tooltip. Accepts css syntax.                                                                                             |
-| `minWidth`          | `string`           | `'auto'`        | Minimun width for the tooltip. Accepts css syntax.                                                                                              |
+| `minHeight`         | `string`           | `'auto'`        | Minimum height for the tooltip. Accepts css syntax.                                                                                             |
+| `minWidth`          | `string`           | `'auto'`        | Minimum width for the tooltip. Accepts css syntax.                                                                                              |
 | `padding`           | `string`           | `'8px'`         | `padding` property for the tooltip. Accepts css syntax.                                                                                         |
 | `popUpPosition`     | `PopUpPositionKey` | `'topCenter'`   | The position of the tooltip.                                                                                                                    |
 | `target`            | `HTMLElement`      | `undefined`     | The HTMLEelement that activates the tooltip. If `closeButton` is `false` the `target` is excluded for the clickout event that close the button. |
