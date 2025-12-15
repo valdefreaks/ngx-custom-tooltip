@@ -16,10 +16,10 @@
   "lint-staged": {
     "*.{ts,js,html}": [
       "prettier --write",
-      "eslint --fix"
+      "eslint"
     ],
     "*.css": [
-      "stylelint --fix"
+      "stylelint"
     ]
   },
   "dependencies": {
