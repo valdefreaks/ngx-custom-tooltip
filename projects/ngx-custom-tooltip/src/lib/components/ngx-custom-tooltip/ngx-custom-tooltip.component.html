@@ -20,17 +20,18 @@
       [style.border-radius]="borderRadius"
       [style.padding]="padding"
     >
-      <img
-        class="ngxct-close-button"
-        alt=""
-        *ngIf="closeButton"
-        [src]="closeButtonImage && closeButtonImage"
-        [style.height]="closeButtonSize"
-        [style.right]="closeButtonMargin"
-        [style.top]="closeButtonMargin"
-        [style.width]="closeButtonSize"
-        (click)="closePopUp()"
-      />
+      @if (closeButton) {
+        <img
+          class="ngxct-close-button"
+          alt=""
+          [src]="closeButtonImage && closeButtonImage"
+          [style.height]="closeButtonSize"
+          [style.right]="closeButtonMargin"
+          [style.top]="closeButtonMargin"
+          [style.width]="closeButtonSize"
+          (click)="closePopUp()"
+        />
+      }
       <ng-content class="ngxct-content"></ng-content>
     </div>
     <div

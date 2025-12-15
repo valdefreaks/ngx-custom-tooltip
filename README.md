@@ -126,12 +126,14 @@ Git hooks are configured automatically when installing dependencies.
 | 2.3.x            | => 14.0.0 < 18.0.0 |
 | 2.4.x            | => 14.0.0 < 19.0.0 |
 | 2.5.x            | => 14.0.0 < 20.0.0 |
+| 3.0.x            | => 17.0.0 < 21.0.0 |
 
 ## 🐛 Report Issues
 
 If you find any issues or have suggestions for improvement, please report them [here.](https://github.com/valdefreaks/ngx-custom-tooltip/issues)
 
 When reporting an issue, include:
+
 - Clear description of the problem
 - Angular and library version you're using
 - Steps to reproduce the issue

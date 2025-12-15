@@ -45,9 +45,7 @@
               "base": "dist/demo-app"
             },
             "index": "projects/demo-app/src/index.html",
-            "polyfills": [
-              "projects/demo-app/src/polyfills.ts"
-            ],
+            "polyfills": ["projects/demo-app/src/polyfills.ts"],
             "tsConfig": "projects/demo-app/tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -171,17 +169,13 @@
               "base": "dist/demo-app-standalone"
             },
             "index": "projects/demo-app-standalone/src/index.html",
-            "polyfills": [
-              "projects/demo-app-standalone/src/polyfills.ts"
-            ],
+            "polyfills": ["projects/demo-app-standalone/src/polyfills.ts"],
             "tsConfig": "projects/demo-app-standalone/tsconfig.app.json",
             "assets": [
               "projects/demo-app-standalone/src/favicon.ico",
               "projects/demo-app-standalone/src/assets"
             ],
-            "styles": [
-              "projects/demo-app-standalone/src/styles.css"
-            ],
+            "styles": ["projects/demo-app-standalone/src/styles.css"],
             "scripts": [],
             "browser": "projects/demo-app-standalone/src/main.ts"
           },
@@ -245,13 +239,37 @@
               "projects/demo-app-standalone/src/favicon.ico",
               "projects/demo-app-standalone/src/assets"
             ],
-            "styles": [
-              "projects/demo-app-standalone/src/styles.css"
-            ],
+            "styles": ["projects/demo-app-standalone/src/styles.css"],
             "scripts": []
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "type": "component"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
     }
   }
 }

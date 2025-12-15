@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -7,6 +6,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  inject,
   Input,
   OnChanges,
   Output,
@@ -34,8 +34,7 @@ import {
   templateUrl: './ngx-custom-tooltip.component.html',
   styleUrls: ['./ngx-custom-tooltip.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [NgIf],
+  imports: [],
 })
 export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   /**
@@ -214,6 +213,9 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
    */
   mappedPopUpPosition?: PopUpPositionKebabCaseKey;
 
+  private cdr = inject(ChangeDetectorRef);
+  private renderer = inject(Renderer2);
+
   /*
    * Escucha los clicks en el documento para cerrar el pop-up si se hace click fuera.
    */
@@ -238,11 +240,6 @@ export class NgxCustomTooltipComponent implements OnChanges, AfterViewInit {
   onWindowResize(): void {
     this.checkForPositionChanges();
   }
-
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private renderer: Renderer2,
-  ) {}
 
   /**
    * Revisa si han cambiado las entradas que podrían afectar a la posición del pop-up.

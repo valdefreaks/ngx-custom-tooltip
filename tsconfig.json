@@ -15,14 +15,9 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2023",
-      "dom"
-    ],
+    "lib": ["ES2023", "dom"],
     "paths": {
-      "ngx-custom-tooltip": [
-        "projects/ngx-custom-tooltip/src/public-api.ts"
-      ]
+      "ngx-custom-tooltip": ["projects/ngx-custom-tooltip/src/public-api.ts"]
     },
     "skipLibCheck": true,
     "esModuleInterop": true,
