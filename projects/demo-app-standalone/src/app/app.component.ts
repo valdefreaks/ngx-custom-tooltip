@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { NgxCustomTooltipComponent } from 'ngx-custom-tooltip';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
   imports: [
