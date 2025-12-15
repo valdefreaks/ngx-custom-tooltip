@@ -94,7 +94,7 @@ export class ExampleComponent { }
 | `minWidth`          | `string`           | `'auto'`        | Minimum width for the tooltip. Accepts css syntax.                                                                                              |
 | `padding`           | `string`           | `'8px'`         | `padding` property for the tooltip. Accepts css syntax.                                                                                         |
 | `popUpPosition`     | `PopUpPositionKey` | `'topCenter'`   | The position of the tooltip.                                                                                                                    |
-| `target`            | `HTMLElement`      | `undefined`     | The HTMLEelement that activates the tooltip. If `closeButton` is `false` the `target` is excluded for the clickout event that close the button. |
+| `target`            | `HTMLElement`      | `undefined`     | The HTMLElement that activates the tooltip. If `closeButton` is `false` the `target` is excluded for the clickout event that close the button. |
 | `triangleBgColor`   | `string`           | `undefined`     | `background-color` property for the triangle. If not provided, `bgColor` is used.                                                               |
 | `(closeEmitter)`    | `boolean`          |                 | Emit `false` when tooltip is closed.                                                                                                            |
 
